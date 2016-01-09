@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'bower-rails'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
@@ -26,4 +27,3 @@ group :test do
   gem 'poltergeist'
   gem 'database_cleaner'
 end
-
