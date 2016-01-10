@@ -4,15 +4,25 @@
 
 <form ng-submit="register()">
   <div class="input-group">
-    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+    <input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" ng-change="validationErrors.email = {}">
+    <div ng-show="validationErrors.email">
+      <div ng-repeat="msg in validationErrors.email">{{msg}}</div>
+    </div>
   </div>
 
   <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+    <input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password" ng-change="validationErrors.password = {}">
+    <div ng-show="validationErrors.password">
+      <div ng-repeat="msg in validationErrors.password">{{msg}}</div>
+    </div>
   </div>
 
   <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password confirmation" ng-model="user.password_confirmation">
+    <input type="password" name="password_confirmation" class="form-control" placeholder="Password confirmation" ng-model="user.password_confirmation" ng-change="validationErrors.password_confirmation = {}">
+
+    <div ng-show="validationErrors.password_confirmation">
+      <div ng-repeat="msg in validationErrors.password_confirmation track by $index">{{msg}}</div>
+    </div>
   </div>
 
   <input type="submit" class="btn btn-default" value="Register">

@@ -1,7 +1,8 @@
 app.controller('navigationCtrl', [
   '$scope',
   'Auth',
-  function($scope, Auth) {
+  'Flash',
+  function($scope, Auth, Flash) {
     $scope.signedIn = Auth.isAuthenticated;
     $scope.logout = Auth.logout;
 
@@ -11,10 +12,12 @@ app.controller('navigationCtrl', [
 
     $scope.$on('devise:new-registration', function (e, user) {
       $scope.user = user;
+      Flash.create('success', 'You have successfully registered');
     });
 
     $scope.$on('devise:login', function (e, user) {
       $scope.user = user;
+      Flash.create('success', 'Welcome');
     });
 
     $scope.$on('devise:logout', function (e, user) {

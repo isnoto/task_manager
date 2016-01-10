@@ -3,6 +3,7 @@
   "dependencies": {
     "angular": "latest",
     "angular-ui-router": "latest",
-    "angular-devise": "latest"
+    "angular-devise": "latest",
+    "angular-flash-alert": "latest"
   }
 }
