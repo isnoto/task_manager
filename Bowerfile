@@ -1,3 +1,4 @@
 asset 'angular', 'latest'
 asset 'angular-ui-router', 'latest'
 asset 'angular-devise', 'latest'
+asset 'angular-flash-alert', 'latest'
