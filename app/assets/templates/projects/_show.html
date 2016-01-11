@@ -3,4 +3,5 @@
     {{project.name}}
   </h3>
   <div ng-show="validationErrors" ng-repeat="error in validationErrors">{{error}}</div>
+  <div ng-repeat="task in project.tasks">{{task.name}}</div>
 </div>

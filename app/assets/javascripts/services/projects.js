@@ -14,6 +14,7 @@ app.factory('projects', [
 
     o.show = function(id) {
       return $http.get('/projects/' + id + '.json').then(function(res) {
+        console.log(res);
         return res.data;
       });
     };
