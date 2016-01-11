@@ -1,7 +1,6 @@
-require 'capybara-webkit'
-require 'capybara/angular'
+require 'capybara'
 
-Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :selenium
 
 RSpec.configure do |config|
   Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
@@ -14,5 +13,4 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  include Capybara::Angular::DSL
 end
