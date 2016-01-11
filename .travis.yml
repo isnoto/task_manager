@@ -16,4 +16,4 @@ script:
   - bundle exec rake db:setup
   - bundle exec rake db:test:prepare
   - bundle exec rake bower:install
-  - xvfb-run -a bundle exec rspec spec
+  - xvfb-run --server-args="-screen 0 1024x768x24" bundle exec rspec

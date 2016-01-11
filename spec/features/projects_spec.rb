@@ -14,6 +14,7 @@ describe 'Projects', js: true do
         click_link 'Projects'
         fill_in :project_name, with: 'Test'
         click_button 'Add project!'
+        puts page.body
         expect(page).to have_content 'Project Test was successfully created'
         expect(page).to have_link 'Show tasks'
       end
