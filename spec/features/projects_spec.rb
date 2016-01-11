@@ -11,6 +11,7 @@ describe 'Projects', js: true do
     context 'with correct data' do
       it 'shows successful message and project shows on page' do
         visit root_path
+        puts page.body
         click_link 'Projects'
         fill_in :project_name, with: 'Test'
         click_button 'Add project!'
