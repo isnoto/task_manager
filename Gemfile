@@ -24,6 +24,7 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'poltergeist'
+  gem 'capybara-webkit'
+  gem 'capybara-angular', '0.1.0'
   gem 'database_cleaner'
 end

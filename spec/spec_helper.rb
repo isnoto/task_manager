@@ -1,6 +1,7 @@
-require 'capybara/poltergeist'
+require 'capybara-webkit'
+require 'capybara/angular'
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
   Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
@@ -12,4 +13,6 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  include Capybara::Angular::DSL
 end
