@@ -1,4 +1,4 @@
-app.controller('navigationCtrl', [
+app.controller('NavigationCtrl', [
   '$scope',
   'Auth',
   'Flash',
@@ -17,7 +17,6 @@ app.controller('navigationCtrl', [
 
     $scope.$on('devise:login', function (e, user) {
       $scope.user = user;
-      Flash.create('success', 'Welcome');
     });
 
     $scope.$on('devise:logout', function (e, user) {

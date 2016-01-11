@@ -4,6 +4,7 @@
     "angular": "latest",
     "angular-ui-router": "latest",
     "angular-devise": "latest",
-    "angular-flash-alert": "latest"
+    "angular-flash-alert": "latest",
+    "angular-xeditable": "latest"
   }
 }

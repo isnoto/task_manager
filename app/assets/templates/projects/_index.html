@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>Projects</h1>
+
+  <form ng-submit="addProject()">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Add project!</button>
+      </span>
+      <input type="text" name="project_name" class="form-control" ng-model="name" ng-change="nameError = null" placeholder="Project name">
+    </div>
+    <span ng-show="nameError" ng-repeat="error in nameError">{{error}}</span>
+  </form>
+
+  <ul class="cards clearfix" ng-repeat="project in projects">
+    <li class="bs-callout bs-callout-primary">
+      <div>Project name:</div>
+      <h4><a id="link" editable-text="project.name" onaftersave="updateProjectName(project)">{{project.name}}</a></h4>
+
+      <div class="project__buttons clear-fix">
+        <a class="btn btn-success" href="#/projects/{{project.id}}">Show tasks</a>
+        <button class="btn btn-danger pull-right" ng-click="deleteProject(project.id, $index)">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+
+</div>
