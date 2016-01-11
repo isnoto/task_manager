@@ -1,9 +1,10 @@
-<div class="collapse navbar-collapse clear-fix" ng-controller="navigationCtrl">
+<div class="collapse navbar-collapse clear-fix" ng-controller="NavigationCtrl">
   <h2><a class="pull-left" href="/">Task manager</a></h2>
   <ul class="nav navbar-nav pull-right">
     <li><a href="#/home">Home</a></li>
     <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
     <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
+    <li ng-show="signedIn()"><a href="#/projects">Projects</a></li>
     <li ng-show="signedIn()"><a href="#/">{{ user.email }}</a></li>
     <li ng-show="signedIn()"><a ng-click="logout()">Log Out</a></li>
   </ul>

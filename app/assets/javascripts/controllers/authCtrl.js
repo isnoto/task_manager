@@ -7,6 +7,7 @@ app.controller('AuthCtrl', [
     $scope.login = function() {
       Auth.login($scope.user).then(function(){
         $state.go('home');
+        Flash.create('success', 'Welcome');
       }, function(err) {
         Flash.create('danger', 'You have entered a wrong email or password');
       });
