@@ -1,0 +1,58 @@
+.tasks {
+  &__form {
+    width: 400px;
+  }
+  
+  &__item {
+    &--to-left {
+      float: left;
+    }
+  }
+  
+  &__wrap {
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #ccc;
+    }
+  }
+
+  &__submit {
+    margin-top: 20px;
+  }
+
+  &__done {
+    width: 10%;
+  }
+
+  &__name {
+    width: 20%;
+  }
+
+  &__details {
+    width: 15%;
+  }
+
+  &__priority {
+    width: 15%;
+  }
+
+  &__deadline {
+    width: 10%;
+  }
+
+  &__edit {
+    width: 10%;
+  }
+
+  &__delete {
+    width: 20%;
+  }
+
+  &__desc {
+    display: none;
+    text-align: left;
+  }
+}

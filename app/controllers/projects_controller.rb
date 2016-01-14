@@ -1,13 +1,12 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_project, only: [:update, :destroy]
+  before_action :find_project, only: [:show, :update, :destroy]
 
   def index
     respond_with current_user.projects
   end
 
   def show
-    @project = Project.with_tasks(current_user.id, params[:id])
     respond_with @project
   end
 
