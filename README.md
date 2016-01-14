@@ -18,9 +18,13 @@ Visit task_manager directory:
 
 ``` cd task_manager ```
 
+Create database.yml
+
+```mv config/database.yml.sample/ config/database.yml```
+
 Install bundler and gems:
 
-``` gem install bundle && bundle install ```
+``` gem install bundler && bundle install ```
 
 Install frontend dependencies
 
