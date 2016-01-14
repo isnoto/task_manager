@@ -53,7 +53,7 @@ app.controller('TasksCtrl', [
       var taskPriority = $scope.task.priority;
       var priority = $scope.priority.value;
 
-      if (!$scope.name|| $scope.name === '') {
+      if (!$scope.task.name|| $scope.task.name === '') {
         Flash.create('danger', 'Name cannot be empty');
         return;
       }
@@ -62,12 +62,16 @@ app.controller('TasksCtrl', [
         $scope.task.priority = priority;
       }
 
-      projects.updateTask($scope.task);
+      projects.updateTask($scope.task)
+        .success(function() {
+          Flash.create('success', 'Task successfully updated');
+        });
     };
 
     $scope.deleteTask = function(project, task, index) {
       projects.deleteTask(project, task).success(function() {
         $scope.project.tasks.splice(index, 1);
+        Flash.create('success', 'Task successfully deleted')
       });
     };
 

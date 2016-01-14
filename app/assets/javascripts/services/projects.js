@@ -53,10 +53,7 @@ app.factory('projects', [
     };
 
     o.updateTask = function(task) {
-      return $http.patch('/projects/' + task.project_id + '/tasks/' + task.id + '.json', task)
-        .error(function(data) {
-          o.errors = data.errors;
-        });
+      return $http.patch('/projects/' + task.project_id + '/tasks/' + task.id + '.json', task);
     };
 
     o.deleteTask = function(project, task) {
