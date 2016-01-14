@@ -3,7 +3,8 @@ var app = angular.module('taskManager',
     'ui.router',
     'Devise',
     'flash',
-    'xeditable'
+    'xeditable',
+    '720kb.datepicker'
   ]);
 
 app.run(function(editableOptions) {

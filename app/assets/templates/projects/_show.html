@@ -1,6 +1,100 @@
 <div class="page-header">
-  <h3>
-    {{project.name}}
-  </h3>
-  <div ng-show="validationErrors" ng-repeat="error in validationErrors">{{error}}</div>
+  <h1>
+   Project: {{project.name}}
+  </h1>
+
+  <button class="btn btn-primary" ng-show="!show" ng-click="showForm()">Add tasks</button>
+  <button class="btn btn-primary" ng-show="show" ng-click="hideForm()">Hide form</button>
+
+  <form ng-show="show" ng-submit="addTask()" class="tasks__form">
+    <div class="form-group tasks__input">
+      <label for="name">Task name</label>
+      <input type="text" name="name" id="name" class="form-control" placeholder="Name" ng-model="name">
+    </div>
+
+    <div class="form-group tasks__input">
+      <label for="description">Task description</label>
+      <textarea name="description" id="description" class="form-control" placeholder="Description" ng-model="description"></textarea>
+    </div>
+
+    <div class="form-group tasks__input">
+      <label for="priority">Task priority</label>
+      <select class="form-control" id="priority" name="priority" ng-init="priority = priorities[2]" ng-model="priority" ng-options="priority as priority.label for priority in priorities"></select>
+    </div>
+
+    <datepicker date-format="yyyy-MM-dd" selector="form-control">
+      <label for="deadline">Task deadline</label>
+      <input ng-model="deadline" class="form-control" id="deadline" placeholder="Choose a date"/>
+    </datepicker>
+
+    <button class="btn btn-default tasks__submit" type="submit">Add task</button>
+  </form>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h3>Tasks list</h3></div>
+  <table class="table">
+    <tr>
+      <th class="tasks__done">Done</th>
+      <th class="tasks__name">Task name</th>
+      <th class="tasks__details">Task details</th>
+      <th class="tasks__priority">Task priority</th>
+      <th class="tasks__deadline">Task deadline</th>
+      <th class="tasks__edit">Task edit</th>
+      <th class="tasks__delete">Task delete</th>
+    </tr>
+  </table>
+
+  <div class="tasks">
+    <div ng-repeat="task in project.tasks">
+      <d-expand-collapse>
+        <div class="tasks__wrap">
+          <div class="clear-fix">
+
+
+            <div class="tasks__done tasks__item--to-left">
+              <input type="checkbox" ng-click="toggleCompleteTask(project.id, task)" ng-model="task.done" ng-checked="task.done">
+            </div>
+
+
+            <div class="tasks__name tasks__item--to-left">
+              <span>{{task.name}}</span>
+            </div>
+
+
+            <div class="tasks__details tasks__item--to-left">
+              <a id="show-more" href="#">Show details</a>
+            </div>
+
+
+            <div class="tasks__priority tasks__item--to-left">
+              {{showCurrentPriority($index)}}
+            </div>
+
+
+            <div class="tasks__deadline tasks__item--to-left">{{task.deadline}}</div>
+
+
+            <div class="tasks__edit tasks__item--to-left">
+              <a href="#/projects/{{project.id}}/tasks/{{task.id}}/edit">Edit</a>
+            </div>
+
+            <div class="tasks__delete tasks__item--to-left clear-fix">
+              <button ng-click="deleteTask(project, task, $index)" id="delete" class="glyphicon glyphicon-trash pull-right"></button>
+            </div>
+
+
+          </div>
+
+
+          <div id="task-description" class="tasks__desc">
+            <h4>Task description: </h4>
+            <p>{{task.description}}</p>
+          </div>
+
+
+        </div>
+      </d-expand-collapse>
+    </div>
+  </div>
 </div>

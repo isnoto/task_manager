@@ -11,21 +11,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build(project_params)
-
-    if @project.save
-      respond_with @project
-    else
-      respond_with @project
-    end
+    @project = current_user.projects.create(project_params)
+    respond_with @project
   end
 
   def update
-    if @project.update(project_params)
-      respond_with @project
-    else
-      respond_with @project
-    end
+    @project.update(project_params)
+    respond_with @project
   end
 
   def destroy

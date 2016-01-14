@@ -23,7 +23,7 @@ app.config([
         controller: 'ProjectsCtrl',
         resolve: {
           projectsPromise: ['projects', function(projects){
-            return projects.getAll();
+            return projects.getAllProjects();
           }]
         }
       })
@@ -33,7 +33,21 @@ app.config([
         controller: 'TasksCtrl',
         resolve: {
           project: ['$stateParams', 'projects', function($stateParams, projects) {
-            return projects.show($stateParams.id);
+            return projects.showProject($stateParams.id);
+          }],
+          task: ['$stateParams', 'projects', function($stateParams, projects) {
+          }]
+        }
+      })
+      .state('taskEdit', {
+        url: '/projects/{id}/tasks/{taskId}/edit',
+        templateUrl: 'assets/tasks/_edit.html',
+        controller: 'TasksCtrl',
+        resolve: {
+          project: ['$stateParams', 'projects', function($stateParams, projects) {
+          }],
+          task: ['$stateParams', 'projects', function($stateParams, projects) {
+            return projects.editTask($stateParams.id, $stateParams.taskId);
           }]
         }
       });

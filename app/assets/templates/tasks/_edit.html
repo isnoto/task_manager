@@ -1,0 +1,24 @@
+<form ng-submit="updateTask()" class="tasks__form">
+  <div class="form-group tasks__input">
+    <label for="name">Task name</label>
+    <input type="text" name="name" id="name" class="form-control" ng-model="task.name" value="{{task.name}}">
+  </div>
+
+  <div class="form-group tasks__input">
+    <label for="description">Task description</label>
+    <textarea name="description" id="description" class="form-control" ng-model="task.description" ></textarea>
+  </div>
+
+  <div class="form-group tasks__input">
+    <label for="priority">Task priority</label>
+    <select class="form-control" id="priority" name="priority" ng-init="priority = priorities[task.priority - 1]" ng-model="priority" ng-options="priority as priority.label for priority in priorities">
+    </select>
+  </div>
+
+  <datepicker date-format="yyyy-MM-dd" selector="form-control">
+    <label for="deadline">Task deadline</label>
+    <input class="form-control" id="deadline" name="deadline" ng-model="task.deadline"/>
+  </datepicker>
+
+  <button class="btn btn-default tasks__submit" type="submit">Update task</button>
+</form>

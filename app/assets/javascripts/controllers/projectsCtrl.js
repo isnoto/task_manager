@@ -9,9 +9,12 @@ app.controller('ProjectsCtrl', [
     $scope.validationErrrors = null;
 
     $scope.addProject = function() {
-      if (!$scope.name|| $scope.name === '') { return; }
+      if (!$scope.name|| $scope.name === '') {
+        Flash.create('danger', 'Name cannot be empty');
+        return;
+      }
 
-      projects.create({ name: $scope.name })
+      projects.createProject({ name: $scope.name })
         .then(function() {
           Flash.create('success', 'Project ' + $scope.name + ' was successfully created');
           $scope.name = '';
@@ -21,7 +24,7 @@ app.controller('ProjectsCtrl', [
         });
     };
 
-    $scope.updateProjectName = function(project, $index) {
+    $scope.updateProjectName = function(project) {
       var d = $q.defer();
       $http.patch('projects/'+ project.id + '.json', project)
         .success(function() {
@@ -36,7 +39,7 @@ app.controller('ProjectsCtrl', [
     };
 
     $scope.deleteProject = function(projectId, index) {
-      projects.delete(projectId);
+      projects.deleteProject(projectId);
       $scope.projects.splice(index, 1);
       Flash.create('success', 'Project has been deleted')
     }
